@@ -1,250 +1,311 @@
-<div align="center">
+# ⚡ Strategic Investment Planner: Germany 2030
+### EV Market Analysis & Charging Infrastructure Dashboard
 
-# 🔌 European E-Mobility Market Dynamics
-
-**Drivers · Regulations · Infrastructure Analysis for Informed Charging Infrastructure Development**
-
-[![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)](https://www.python.org/)
-[![Libraries](https://img.shields.io/badge/Libraries-Pandas%20%7C%20NumPy%20%7C%20SciPy%20%7C%20Scikit--learn%20%7C%20Matplotlib-informational)]()
-[![Institution](https://img.shields.io/badge/Institution-RWTH%20Aachen-darkblue)]()
-[![Partner](https://img.shields.io/badge/Industry%20Partner-Numbat%20GmbH-green)]()
-[![Thesis](https://img.shields.io/badge/Type-Master's%20Thesis-orange)]()
-
-</div>
+> **An interactive Tableau dashboard built as a client-facing case study for P3 Group** — a consulting and engineering firm specializing in automotive and energy. Designed to convince a Charge Point Operator (CPO) to invest in a data-driven strategic planning tool by demonstrating the full analytical chain: EV adoption → charging demand → infrastructure gap → revenue opportunity.
 
 ---
 
-## 📌 Overview
+## 🎬 Live Demo
 
-This master's thesis — conducted at **RWTH Aachen University** in collaboration with **[Numbat GmbH](https://www.numbat.de/)**, a European fast-charging infrastructure company — investigates the key factors driving EV adoption and charging infrastructure growth across **14 European countries**.
+▶️ **[Watch the Full Dashboard Demo on Loom / YouTube](#)**
+*See the sliders in action — market scenarios updating Revenue Gap and AFIR Compliance Index in real time.*
 
-The research combines a **quantitative regression model** (Python) with **structured qualitative analysis** and a **multi-criteria incentive rating framework** to deliver actionable intelligence for stakeholders — EV manufacturers, charging infrastructure providers, and policymakers.
-
-> **Why it matters:** Europe has a 2035 zero-emissions target. Understanding *which* policy, infrastructure, and economic factors actually move the market is essential for companies like Numbat deciding where to invest next.
+![Dashboard Demo](assets/dashboard-demo.gif)
+*Moving the Market Adoption Speed slider from Stagnation (0.5×) → Boom (1.5×) — Revenue Opportunity Gap updates instantly.*
 
 ---
 
-## 🎯 Research Questions
+## 📌 Project Overview
 
-1. What are the **quantitative key factors** driving differential success in the European e-mobility market ramp-up?
-2. What are the **qualitative key factors** — socio-cultural and policy-driven — that shape market dynamics?
-3. What role do **regulatory incentives** (subsidies, tax rebates, grants) play in EV and charging infrastructure adoption?
+This project was developed in response to a real-world analytics case study assignment from **P3 Group**. The challenge: use publicly available data to analyze the German EV market and present findings in an **interactive digital tool** suitable for a live 30-minute client demo.
+
+The final deliverable — the **Strategic Investment Planner: Germany 2030** — is a Tableau dashboard that allows a CPO to dynamically stress-test market scenarios, understand their infrastructure gap, and quantify their revenue opportunity in the German public charging market through 2030.
+
+**The core analytical question the dashboard answers:**
+
+> *Given the projected growth of the German EV fleet, how large is the gap between national charging demand and current public supply capacity — and what is that gap worth in euros to a CPO?*
+
+---
+
+## 📸 Dashboard Screenshots
+
+| Market Overview & EV Adoption | Charging Demand Engine |
+|---|---|
+| ![Overview](assets/screenshot-overview.png) | ![Demand](assets/screenshot-demand.png) |
+
+| Infrastructure Gap Analysis | Revenue Opportunity & AFIR Compliance |
+|---|---|
+| ![Gap](assets/screenshot-gap.png) | ![Revenue](assets/screenshot-revenue.png) |
 
 ---
 
 ## 🗂️ Repository Structure
 
 ```
-E-Mobility_Market_Dynamics_Model/
-│
-├── Emobility_Market_Dynamics.ipynb   # Full analysis pipeline
-│                                      # (data collection → EDA → correlation
-│                                      #  → OLS regression → incentive scoring)
-└── README.md                          # This file
+├── CaseStudyP3.pptx                 # Presentation deck (methodology, assumptions, findings)
+├── assets/
+│   ├── dashboard-demo.gif           # Animated GIF showing slider interactivity
+│   ├── screenshot-overview.png      # Market overview & EV adoption slide
+│   ├── screenshot-demand.png        # Charging demand engine slide
+│   ├── screenshot-gap.png           # Infrastructure gap analysis slide
+│   └── screenshot-revenue.png       # Revenue opportunity & AFIR compliance slide
+└── README.md                        # This file
+```
+
+> 🔒 **The interactive Tableau dashboard (`.twb`) and master dataset (`.xlsx`) are available upon request.**
+> Reach out via [LinkedIn](#) or [email](#) — happy to walk through the tool live.
+
+---
+
+## 📊 Dashboard Architecture & Analytical Narrative
+
+The dashboard follows a strict top-down analytical flow, designed to guide a CPO client from market context to investment decision:
+
+```
+1. Market Snapshot  →  2. EV Adoption Trends  →  3. Charging Demand Engine
+        ↓
+4. Supply Capacity Model  →  5. Gap Analysis  →  6. Revenue Opportunity & AFIR Compliance
 ```
 
 ---
 
-## 🔬 Methodology
+## 🔧 The Computational Engine: Formula Deep-Dive
 
-The study uses a **three-track mixed-methods approach**:
+Every KPI in the dashboard derives from one of two master calculations: **demand** and **supply**.
+
+---
+
+### 📐 Formula 1: National Energy Demand (GWh)
 
 ```
-Data Sources                  Analysis Tracks                   Output
-─────────────────────         ──────────────────────────        ──────────────────────────────
-Eurostat                  ──► QUANTITATIVE                  ──► OLS Regression Model
-European Alt. Fuels Obs.       Pearson correlation                (R² = 0.735, 14 variables,
-IEA Global EV Explorer         Multiple linear regression          96 observations)
-ACEA Reports                   Descriptive statistics
-Numbat GmbH (internal) ───►
-                               QUALITATIVE                    ──► 9 Socio-cultural &
-Country-specific DBs      ──►  Thematic analysis                  Policy-related drivers
-                               Recurring factor identification     (consumer acceptance,
-                               Cross-country comparison            PPPs, standardisation...)
-
-ACEA Incentive Data       ──► INCENTIVE SCORING              ──► Country rankings across
-                               Multi-criteria rating (5 criteria)  14 EU markets
-                               Weighted scoring: Market           (High / Medium / Low)
-                               Influence 40%, Financial
-                               Impact 30%, Access 15%,
-                               Scope 10%, Duration 5%
+C_National_Fleet_Demand_GWh =
+    Fleet_Size × (14,000 / 100 × 19) × 1.12 / 1,000,000
 ```
 
-### Variables in the Regression Model
-
-| Category | Variables |
-|---|---|
-| **Dependent** | EV Registrations |
-| **Demographic** | Inhabitants |
-| **Economic** | GDPI, AC/DC/HPC Charging Prices, Energy Cost |
-| **Infrastructure** | AC Points, DC Points, HPC Points, Total Publicly Charged Electricity (kWh), EVs Charging Only in Public |
-| **Home Charging** | Amount of EVs in Wallbox Households, Realistic Share of Wallbox Owners, Population Share with Home-Charging Possible |
-| **Environmental** | Environmental Performance Index (EPI) Score |
-
----
-
-## 📊 Results
-
-### 1. Correlation Analysis
-
-The heatmap below shows Pearson correlations between EV registrations and all independent variables.
-
-![Correlation Matrix Heatmap](correlation_heatmap.png)
-
-**Key correlations with EV Registrations:**
-
-| Variable | Pearson r | P-value | Interpretation |
-|---|---|---|---|
-| Amount of EVs in Wallbox Households | **0.795** | < 0.00001 | Strongest predictor — private charging access drives adoption |
-| Total Publicly Charged Electricity (kWh) | **0.737** | < 0.00001 | More public charging energy = more EVs |
-| DC Points | **0.706** | < 0.00001 | Fast charging density strongly linked to uptake |
-| Amount of EVs Charging Only in Public | **0.714** | < 0.00001 | Public infrastructure demand co-moves with registration |
-| HPC Points | **0.676** | < 0.00001 | High-power charging presence correlated with adoption |
-| GDPI | 0.514 | < 0.0001 | Moderate — economic prosperity helps but not dominant |
-| AC Charging Price | 0.074 | 0.561 | Negligible — price alone doesn't move the needle |
-| DC / HPC Charging Price | ~0.00 / -0.07 | >0.5 | No meaningful price effect on adoption |
-
-> **Insight:** Infrastructure availability — not price — is the primary driver of EV adoption. Charging price changes matter less than whether charging exists at all.
-
----
-
-### 2. Regression Model (OLS)
-
-**Model fit: R² = 0.735 · Adjusted R² = 0.692 · N = 100 observations**
-
-| Variable | Coefficient | P-value | Significance |
-|---|---|---|---|
-| Amount of EVs in Wallbox Households | 0.4313 | 0.000 | ★★★ Highly significant |
-| Inhabitants | 0.1401 | 0.007 | ★★ Significant |
-| AC Charging Price | -0.1477 | 0.057 | ✦ Marginally significant (negative) |
-| Amount of EVs Charging Only in Public | -0.1751 | 0.095 | ✦ Marginal |
-| GDPI, DC Points, HPC Points, etc. | — | > 0.1 | Not significant independently |
-
-The model explains **73.5% of variance** in EV registrations. Two variables stand out:
-- **Wallbox household access** is the dominant driver: convenience of home charging is what tips purchasing decisions
-- **Population size** is a baseline predictor — larger countries have more EVs, but not proportionally more than private charging would predict
-- **AC charging price** shows a subtle negative effect — higher public charging costs marginally deter adoption
-
-> **Why didn't more variables reach significance?** High multicollinearity between infrastructure variables (DC points, HPC points, publicly charged energy) means they share explanatory power. Each is individually correlated with EV uptake, but the regression allocates that power to the most independent predictor (wallbox access). This is an honest model limitation, addressed through the qualitative and incentive analysis tracks.
-
----
-
-### 3. Comparative Incentive Analysis
-
-The chart below maps EV market ratings and charging infrastructure ratings against key quantitative outputs (EV registrations, DC/HPC/AC charging points, EPI score) for 14 European countries.
-
-![Comparative Analysis of Incentives and Key Quantitative Factors](comparative_analysis.png)
-
-**Three clusters emerge:**
-
-| Cluster | Countries | Pattern |
+| Constant | Value | Source & Reasoning |
 |---|---|---|
-| 🟢 **High incentives → Strong market growth** | Germany, Norway, France, Austria | High EV market ratings, robust EV registrations — but charging infrastructure often lags market demand |
-| 🟡 **Moderate incentives → Mixed outcomes** | Spain, Italy, Belgium, Netherlands | Spain and Belgium show balanced growth; Italy and Netherlands show gaps between market demand and infrastructure |
-| 🔵 **Balanced moderate incentives → Steady growth** | UK, Finland, Denmark, Sweden, Switzerland, Czech Republic | Conservative but stable — medium ratings across both market and infrastructure |
-
-> **Key finding for Numbat GmbH:** High-incentive markets (Germany, Norway, France) have strong EV demand but *under-developed* charging infrastructure relative to that demand — representing the best near-term investment opportunity for fast-charging providers.
-
----
-
-### 4. Qualitative Findings — 9 Key Factors
-
-Beyond what quantitative data can capture, the analysis identified **9 structural drivers** across two categories:
-
-**Policy-Related Drivers**
-- **Local & Regional Incentives** — Tax rebates and subsidies (Germany, Netherlands) directly accelerate adoption, but require coordinated policy frameworks to be effective
-- **Technological Advancements** — Battery improvements and fast-charging tech only translate to adoption when paired with supportive infrastructure policy (Norway's fast-charging investment is the model)
-- **Public-Private Partnerships** — Nantes and Hamburg demonstrate that PPPs resolve the financing gap for infrastructure in multi-family dwellings and underserved areas
-- **Standardisation** — Uniform connectors (Type 2 mandate) and protocols reduce market fragmentation, lower costs, and enable faster deployment
-- **Geographical Alignment** — Matching charging infrastructure to local renewable energy (wind in Nordics, solar in Southern Europe) improves both sustainability and economics
-
-**Socio-Cultural Drivers**
-- **Consumer Acceptance** — Safety concerns, range anxiety, and recharging time remain active barriers; transparent policies and demonstration projects are needed to build trust
-- **Socio-Demographic Factors** — Higher-income, educated, urban households lead adoption; policies targeting lower-income and rural populations are needed for broader uptake
-- **Total Cost of Ownership** — BEVs are cost-competitive over 10 years, but high upfront cost still deters buyers without sufficient incentive design
-- **Data Availability** — Real-time charging station data reduces range anxiety and enables dynamic pricing; markets with better data infrastructure show higher utilisation rates
+| **Annual Mileage** | 14,000 km/yr | German Federal average for passenger cars (Kraftfahrt-Bundesamt) |
+| **Energy Consumption** | 19 kWh / 100 km | Technical benchmark for a mid-range BEV (e.g., VW ID.3 / Tesla Model 3), including real-world climate control overhead |
+| **÷ 100** | Normalization | Converts the rate from "per 100 km" to "per km" for multiplication with annual mileage |
+| **× 1.12 (Charging Loss)** | +12% overhead | Energy lost as heat during AC-to-DC conversion inside the car's onboard charger. The CPO must deliver 12% more from the grid than what enters the battery — this is **grid-side demand**, not battery-side |
+| **÷ 1,000,000** | Unit conversion | kWh → GWh for macro-market reporting |
 
 ---
 
-## 💡 Key Conclusions
+### 📐 Formula 2: Supply Capacity (GWh)
 
-1. **Home charging infrastructure is the single most important lever** — wallbox access in private households predicts EV registrations more strongly than any other factor (r = 0.795)
-2. **DC fast-charging density is the most important public infrastructure variable** — strongly correlated with adoption (r = 0.706) and critical for reducing range anxiety on longer journeys
-3. **Price alone doesn't determine adoption** — charging price has near-zero correlation with EV registrations; availability and convenience matter far more
-4. **Financial incentives drive demand, but not always infrastructure** — Germany has strong market growth from incentives, but infrastructure investment has not kept pace, creating an exploitable gap
-5. **European markets are not homogeneous** — a single pan-European model cannot predict country-level outcomes; regional qualitative factors carry substantial weight that quantitative models underestimate
-
----
-
-## 🧰 Tech Stack
-
-```python
-# Core analysis
-import pandas as pd          # Data collection, cleaning, transformation
-import numpy as np           # Numerical computation
-from scipy import stats      # Pearson correlation, p-values
-import statsmodels.api as sm # OLS regression, VIF, diagnostic tests
-from sklearn.linear_model import LinearRegression  # Model building
-
-# Diagnostics
-# White test (heteroscedasticity), Durbin-Watson (autocorrelation),
-# Ramsey RESET (specification), VIF (multicollinearity)
-
-# Visualisation
-import matplotlib.pyplot as plt
-import seaborn as sns         # Correlation heatmap
-
-# Data sources
-# Eurostat, European Alternative Fuels Observatory, IEA Global EV Explorer,
-# ACEA, country-specific databases, Numbat GmbH internal data (2020–2023)
+```
+C_Supply_Capacity_GWh =
+    ((AC_Points  × 11 kW  × 8,760 hrs × AC_Efficiency)
+  + (DC_Points  × 150 kW × 8,760 hrs × DC_Efficiency))
+  / 1,000,000
 ```
 
----
-
-## 🚀 How to Run
-
-```bash
-# Clone the repository
-git clone https://github.com/itsViru/E-Mobility_Market_Dynamics_Model.git
-cd E-Mobility_Market_Dynamics_Model
-
-# Install dependencies
-pip install pandas numpy scipy scikit-learn statsmodels matplotlib seaborn jupyter
-
-# Launch the notebook
-jupyter notebook Emobility_Market_Dynamics.ipynb
-```
-
-The notebook is fully self-contained with inline comments explaining each analysis step.
-
----
-
-## ⚠️ Limitations & Honest Model Assessment
-
-| Limitation | Impact | How Addressed |
+| Constant | Value | Reasoning |
 |---|---|---|
-| High multicollinearity between infrastructure variables | Reduces individual statistical significance in regression | VIF analysis conducted; qualitative overlay compensates |
-| Data unavailable for some countries/years | Reduced sample size for some variables (n=76–96) | Values estimated from correlated statistics where missing; documented |
-| Cross-country regression on heterogeneous markets | Model captures average effects, not country-specific dynamics | Qualitative analysis provides country-level context |
-| Regression explains 73.5% of variance | 26.5% unexplained — likely socio-cultural factors | Three-track methodology explicitly designed to capture the remainder |
+| **8,760** | Hours/year | 24 hrs × 365 days. Converts instantaneous power (kW) into theoretical maximum annual energy (kWh) — the ceiling if a charger ran at full power 100% of the time |
+| **11 kW** | AC power rating | Standard Type 2 three-phase AC charging, typical for destination charging (workplace, retail) |
+| **150 kW** | DC/HPC power rating | Conservative baseline for High Power Charging. Modern HPC reaches 300–350 kW, but 150 kW is used as a cautious 2030 planning minimum |
+| **AC/DC Efficiency** | See sliders | Utilization multiplier — scales theoretical maximum down to actual operational output |
 
 ---
 
-## 🎓 Academic Context
+### 📐 Formula 3: Weighted Average Power (~50 kW Proxy)
 
-| | |
+For the infrastructure gap calculation (`C_Required_Total_Plugs`), the model uses a weighted average across the 80/20 AC-to-DC split:
+
+```
+Weighted Power = (11 kW × 0.80) + (200 kW × 0.20)
+               = 8.8 + 40
+               = 48.8 kW  ≈  50 kW  (rounded for planning)
+```
+
+**Why 80/20?** The current German public charging network (Bundesnetzagentur registry) is predominantly slow AC — destination chargers at parking lots, offices, and retail. The 80/20 split reflects both current deployment data and the AFIR Masterplan Ladeinfrastruktur II roadmap targets.
+
+---
+
+## 🎛️ The Scenario Controls: Slider Logic & Validation
+
+All four sliders share a critical design principle called **Validated Logic**:
+
+```tableau
+IF MIN([Year]) <= 2025
+THEN [Empirical Historical Baseline]
+ELSE [Parameter / Slider Value]
+END
+```
+
+Historical data (2017–2025) is **locked** to empirical, source-verified values. Sliders only activate for 2026–2030 projections. This ensures the dashboard cannot rewrite history and remains fully defensible in a client presentation — if a slider is moved and the 2023 numbers don't change, that is intentional and correct.
+
+---
+
+### 🎚️ Slider 1: Urban Business Intensity (Parameter 1)
+
+**Controls:** `C_Addressable_CPO_Market_GWh` — the share of total national EV energy demand flowing through the **public** CPO network vs. private home charging.
+
+| Setting | Value | Scenario Meaning |
+|---|---|---|
+| **Minimum** | 10% (0.10) | Highly rural market. Nearly all EV owners have private driveways with home wallboxes. CPOs capture very little demand. |
+| **Historical Baseline** | 30% (0.30) | Validated for 2017–2025. Early adopters were predominantly homeowners charging privately. 70% of demand stayed off the public grid. |
+| **Maximum** | 80% (0.80) | Dense urban extreme. Apartment dwellers in Berlin / Munich / Hamburg have no private parking — nearly all their demand flows to public CPOs. |
+| **Step Size** | 0.05 (5%) | A 5% national shift represents hundreds of thousands of vehicles changing behavior — a realistic policy or demographic increment. |
+
+**The strategic trigger:** As Germany scales toward 15M EVs, adoption shifts to urban apartment dwellers without private parking. Every 5% move toward 80% represents a structurally larger revenue capture opportunity for CPOs deployed in urban locations.
+
+---
+
+### 🎚️ Slider 2: AC Asset Efficiency (Parameter 2)
+
+**Controls:** Utilization multiplier on all AC charging points in `C_Supply_Capacity_GWh`.
+
+**Conceptual framing:** Out of 8,760 total hours per year, how many hours is an AC plug **actively dispensing energy**?
+
+| Setting | Value | Real-World Meaning |
+|---|---|---|
+| **Minimum** | 5% (0.05) | ~1.2 hrs/day. A "dead" charger — poor location, barely 1 car served per day. |
+| **Historical Baseline** | 13% (0.13) | ~3.1 hrs/day. One car charges during a typical shopping trip or workday. |
+| **Maximum** | 30% (0.30) | ~7.2 hrs/day. Near-optimal. Hard to exceed due to the idle blocking problem. |
+| **Step Size** | 0.01 (1%) | Fine-grained — 1% on an 11 kW charger is a small absolute energy increment. |
+
+**The Idle Blocking Problem — why AC rarely exceeds 30%:** AC charging is slow (11 kW). A car at a supermarket might finish charging in 3–4 hours, but the driver stays for 6 hours. The plug is occupied but generating zero revenue for the final 2+ hours. This structural parking problem makes exceeding 30% utilization nearly impossible without active overstay pricing.
+
+**State of Charge (SoC) context:** EV batteries charge non-linearly. From **80% → 100% SoC**, the Battery Management System (BMS) throttles incoming power to prevent thermal damage — low AC power (11 kW) handles this phase safely. AC is therefore ideal for **overnight / destination** charging where the car sits for 6–10 hours completing a slow, safe full top-up.
+
+---
+
+### 🎚️ Slider 3: DC / HPC Asset Efficiency (Parameter 3)
+
+**Controls:** Utilization multiplier on all DC/HPC charging points in `C_Supply_Capacity_GWh`.
+
+| Setting | Value | Real-World Meaning |
+|---|---|---|
+| **Minimum** | 5% (0.05) | ~1.2 hrs/day. 2–3 cars served. Failed location. |
+| **Historical Baseline** | 9% (0.09) | ~2.1 hrs/day. ~4–5 cars/day at ~25–30 min per session. |
+| **Maximum** | 40% (0.40) | ~9.6 hrs/day. ~19–20 cars/day. A premium Autobahn hub at near-full capacity. |
+| **Step Size** | 0.01 (1%) | Critical granularity — 1% on a 150 kW charger ≈ 2,190 kWh/year × €0.50 ≈ **~€1,100 additional revenue per plug per year**. |
+
+**Why DC caps at ~40%:** Even the best highway hubs face unavoidable friction — bay maneuvering (2–5 min), payment authorization (1–3 min), peak-hour slot gaps, and near-zero nighttime demand. 40% is the aspirational ceiling for a world-class CPO location.
+
+**SoC context:** DC chargers bypass the car's onboard AC-to-DC converter and push current directly into the battery at very high power (150–350 kW), exploiting the **10% → 80% SoC window** where the battery accepts maximum charge freely. Above 80%, the BMS aggressively tapers accepted power to protect cell longevity — the commercial session effectively ends at 80% to maximize turnover.
+
+**The margin story:** DC/HPC stations dispense 10–20× more energy per hour than AC, serve more customers per day, and command premium per-kWh pricing. The DC Efficiency slider is the **single most impactful revenue lever** in the entire dashboard.
+
+---
+
+### 🎚️ Slider 4: Market Adoption Speed (Parameter 4)
+
+**Controls:** `C_Interactive_Fleet_Size` — projected total German EV fleet 2026–2030 as a multiplier on the government's 15M base target.
+
+| Setting | Value | Scenario |
+|---|---|---|
+| **0.5** | Stagnation | ~7.5M EVs by 2030. Policy delays, subsidy removal, or infrastructure gaps suppressing demand. |
+| **1.0 (Baseline)** | Base Case | ~15M EVs by 2030. Official **Masterplan Ladeinfrastruktur II** government target. |
+| **1.5** | Boom | ~22.5M EVs by 2030. Driven by BEV-ICE price parity or accelerated regulatory ICE phase-out. |
+
+**Why this is the most powerful lever:** Fleet size multiplies every downstream calculation. Shifting from 1.0 → 1.5 adds ~50% to the Revenue Opportunity Gap — instantly reframing the entire investment thesis.
+
+---
+
+## 📈 Key Performance Indicators
+
+### ⭐ North Star KPI: Revenue Opportunity Gap (€)
+
+```
+Revenue_Gap_EUR =
+    (C_National_Fleet_Demand_GWh − C_Supply_Capacity_GWh)
+    × 1,000,000      [GWh → kWh]
+    × €0.50 / kWh    [blended CPO retail price]
+```
+
+**Why €0.50/kWh?** Blended average CPO retail price in Germany — a mix of AC tariffs (~€0.40–0.45) and DC/HPC tariffs (~€0.55–0.75). Converts an abstract GWh shortfall into a direct, tangible revenue opportunity — the number that makes a CPO sit up and listen.
+
+---
+
+### 🇪🇺 Regulatory KPI: AFIR Compliance Index (kW / BEV)
+
+```
+AFIR_Index = Total_Installed_Power_kW / Total_EV_Fleet
+           → Must be ≥ 1.3 kW per vehicle  (EU AFIR Regulation mandate)
+```
+
+The EU's **Alternative Fuels Infrastructure Regulation (AFIR)** requires a minimum of **1.3 kW of public charging power per registered BEV**. The dashboard displays a red / amber / green compliance status — immediately signalling where the market is **"At Risk"** vs. **"Compliant"** and where CPO investment is most urgent.
+
+---
+
+### 📊 Supporting KPIs
+
+| KPI | Logic | Strategic Value |
+|---|---|---|
+| **Total EV Fleet** | Historical: KBA data. Projected: Base × Adoption Speed | Demand anchor for all calculations |
+| **EV Market Share (%)** | EV Stock / Total Vehicle Fleet | Market maturity indicator |
+| **EVs per Charging Point** | SUM(EVs) / SUM(Chargers) | Infrastructure pressure gauge |
+| **Infrastructure Sufficiency (%)** | (Actual Plugs / Required Plugs) × 100 | Under/over-supply assessment |
+| **Required Total Plugs** | Demand Gap (kWh) / (50 kW × 8,760 × avg. efficiency) | Physical investment target for CPO |
+| **Energy Sales Potential (GWh/yr)** | Addressable CPO Market × CPO capture share | Top-line revenue sizing |
+| **High-Margin Asset Mix** | AC vs. DC point count over time | Portfolio optimization signal |
+
+---
+
+## 📁 Data Sources
+
+All data is publicly available. Full documentation with access dates and URLs is in the presentation deck.
+
+| Source | Data Used |
 |---|---|
-| **Institution** | RWTH Aachen University — Institute of Technology and Innovation Management |
-| **Chair** | Innovation, Strategy and Organization |
-| **First Examiner** | Prof. Torsten-Oliver Salge, PhD |
-| **Second Examiner** | Prof. Dr. Daniel Wentzel |
-| **University Supervisor** | Katharina Thoms, M.Sc. |
-| **Industry Supervisor** | Dr. Moritz Wollbrink (Numbat GmbH) |
-| **Submission Date** | September 2024 |
-| **Author** | Virendra Kowale (Matriculation No. 416856) |
+| **Kraftfahrt-Bundesamt (KBA)** | German EV registrations & total vehicle fleet (2017–2024) |
+| **Bundesnetzagentur** | Public charging point registry — AC/DC split, geographic distribution |
+| **European Alternative Fuels Observatory (EAFO)** | EU-wide EV stock & charger benchmarks |
+| **IEA Global EV Outlook** | International growth trend comparisons and scenario references |
+| **Masterplan Ladeinfrastruktur II (BMWK)** | Government targets (15M EVs by 2030, AFIR compliance roadmap) |
+| **Shell / Prognos Mobility Study** | Mileage assumptions, charging behavior baselines |
+| **BDEW / Statista** | Consumer charging behavior split, AC vs. DC usage distribution |
 
 ---
 
-## 📄 Note on Data
+## 🛠️ Tools & Technologies
 
-Data was collected from public European databases (Eurostat, European Alternative Fuels Observatory, IEA) and supplemented with proprietary data from Numbat GmbH. Proprietary data is not included in this repository. The notebook demonstrates the full analytical pipeline and methodology using the available data.
+| Tool | Role |
+|---|---|
+| **Tableau Desktop** | Dashboard design, parameter/slider logic, calculated fields, interactivity |
+| **Microsoft Excel** | Data collection, cleaning, transformation, source documentation |
+| **PowerPoint** | Client-facing presentation: market context, methodology, key findings |
+
+---
+
+## 💡 Key Findings
+
+- Germany's EV fleet is on a trajectory toward **15 million vehicles by 2030** — a ~10× demand increase from ~1.5M in 2023
+- At current deployment rates, the public charging network will face **structural undersupply by 2027–2028**, with the gap widening sharply thereafter
+- **DC/HPC is the critical margin lever** — each 1% improvement in utilization translates to ~€1,100 in additional annual revenue per plug
+- As adoption shifts to urban apartment dwellers, the share of demand flowing to public CPOs could rise from 30% to 60–80%, dramatically expanding the addressable market
+- Germany risks breaching the **EU AFIR 1.3 kW/BEV threshold by 2027** without accelerated infrastructure investment — a first-mover opportunity for proactive CPOs
+
+---
+
+## 🔒 Access to Dashboard & Dataset
+
+The interactive Tableau workbook and underlying dataset are **not publicly hosted** to protect the analytical methodology.
+
+If you'd like to explore the full tool or discuss the project in detail, feel free to reach out:
+
+- 💼 [LinkedIn](#) — connect and send a message
+- 📧 [Email](#) — direct request for a live walkthrough
+
+---
+
+## 👤 Author
+
+**Virendra [Last Name]**
+Data Analytics · Business Intelligence · EV & Mobility Markets
+
+[LinkedIn](#) · [Portfolio](#) · [Email](#)
+
+---
+
+## 📜 License & Attribution
+
+This project was created as an independent response to a consulting case study brief. All underlying data is sourced from public institutions (see Data Sources). The analytical methodology, dashboard architecture, calculated fields, scenario logic, and visual design are original work by the author.
+
+---
+
+*"Moving a slider re-calculates a billion-euro forecast. That's the point."*
