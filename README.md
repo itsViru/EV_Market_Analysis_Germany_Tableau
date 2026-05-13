@@ -288,17 +288,17 @@ The interactive Tableau workbook and underlying dataset are **not publicly hoste
 
 If you'd like to explore the full tool or discuss the project in detail, feel free to reach out:
 
-- 💼 [LinkedIn](#) — connect and send a message
-- 📧 [Email](#) — direct request for a live walkthrough
+- 💼 [LinkedIn: www.linkedin.com/in/virendra-kowale](#) — connect and send a message
+- 📧 [Email: kowalevirendra@gmail.com](#) — direct request for a live walkthrough
 
 ---
 
 ## 👤 Author
 
-**Virendra [Last Name]**
+**Virendra Kowale**
 Data Analytics · Business Intelligence · EV & Mobility Markets
 
-[LinkedIn](#) · [Portfolio](#) · [Email](#)
+[LinkedIn: www.linkedin.com/in/virendra-kowale](#) · [Portfolio: https://itsviru.github.io/VirendraKowale.github.io/](#) · [Email: kowalevirendra@gmail.com](#)
 
 ---
 
