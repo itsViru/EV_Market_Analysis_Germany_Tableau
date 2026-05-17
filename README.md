@@ -1,13 +1,16 @@
 # ⚡ Strategic Investment Planner: Germany 2030
 ### EV Market Analysis & Charging Infrastructure Dashboard
 
+<img width="1920" height="1080" alt="Screenshot 2026-05-17 at 15 27 01" src="https://github.com/user-attachments/assets/b2a2f081-730b-42c8-853f-12d6910f9544" />
+
+
 > **An interactive Tableau dashboard built as a client-facing case study for P3 Group** — a consulting and engineering firm specializing in automotive and energy. Designed to convince a Charge Point Operator (CPO) to invest in a data-driven strategic planning tool by demonstrating the full analytical chain: EV adoption → charging demand → infrastructure gap → revenue opportunity.
 
 ---
 
-## 🎬 Live Demo
+## 🎬 Live Demo (in process....)
 
-▶️ **[Watch the Full Dashboard Demo on Loom / YouTube](#)**
+**in process.....**▶️ **[Watch the Full Dashboard Demo on Loom / YouTube](#)
 *See the sliders in action — market scenarios updating Revenue Gap and AFIR Compliance Index in real time.*
 
 ![Dashboard Demo](assets/dashboard-demo.gif)
@@ -27,7 +30,7 @@ The final deliverable — the **Strategic Investment Planner: Germany 2030** —
 
 ---
 
-## 📸 Dashboard Screenshots
+## 📸 Dashboard Screenshots (in process....)
 
 | Market Overview & EV Adoption | Charging Demand Engine |
 |---|---|
