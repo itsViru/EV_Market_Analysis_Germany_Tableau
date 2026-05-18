@@ -4,7 +4,7 @@
 <img width="1920" height="1080" alt="Screenshot 2026-05-17 at 15 27 01" src="https://github.com/user-attachments/assets/b2a2f081-730b-42c8-853f-12d6910f9544" />
 
 
-> **An interactive Tableau dashboard built as a client-facing case study for P3 Group** — a consulting and engineering firm specializing in automotive and energy. Designed to convince a Charge Point Operator (CPO) to invest in a data-driven strategic planning tool by demonstrating the full analytical chain: EV adoption → charging demand → infrastructure gap → revenue opportunity.
+> **An interactive Tableau dashboard built as a client-facing case study for a consulting and engineering firm specializing in automotive and energy. Designed to convince a Charge Point Operator (CPO) to invest in a data-driven strategic planning tool by demonstrating the full analytical chain: EV adoption → charging demand → infrastructure gap → revenue opportunity.
 
 ---
 
@@ -20,7 +20,7 @@
 
 ## 📌 Project Overview
 
-This project was developed in response to a real-world analytics case study assignment from **P3 Group**. The challenge: use publicly available data to analyze the German EV market and present findings in an **interactive digital tool** suitable for a live 30-minute client demo.
+This project was developed in response to a real-world analytics case study assignment from consulting and engineering firm specializing in automotive and energy. The challenge: use publicly available data to analyze the German EV market and present findings in an **interactive digital tool** suitable for a live 30-minute client demo.
 
 The final deliverable — the **Strategic Investment Planner: Germany 2030** — is a Tableau dashboard that allows a CPO to dynamically stress-test market scenarios, understand their infrastructure gap, and quantify their revenue opportunity in the German public charging market through 2030.
 
@@ -45,7 +45,7 @@ The final deliverable — the **Strategic Investment Planner: Germany 2030** —
 ## 🗂️ Repository Structure
 
 ```
-├── CaseStudyP3.pptx                 # Presentation deck (methodology, assumptions, findings)
+├── CaseStudy.pptx                 # Presentation deck (methodology, assumptions, findings)
 ├── assets/
 │   ├── dashboard-demo.gif           # Animated GIF showing slider interactivity
 │   ├── screenshot-overview.png      # Market overview & EV adoption slide
