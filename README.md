@@ -42,7 +42,7 @@ The final deliverable — the **Strategic Investment Planner: Germany 2030** —
 
 ---
 
-## 🗂️ Repository Structure
+## 🗂️ Repository Structure (in process....)
 
 ```
 ├── CaseStudy.pptx                 # Presentation deck (methodology, assumptions, findings)
