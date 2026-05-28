@@ -20,7 +20,7 @@
 
 ## 📌 Project Overview
 
-This project was developed in response to a real-world analytics case study assignment from consulting and engineering firm specializing in automotive and energy. The challenge: use publicly available data to analyze the German EV market and present findings in an **interactive digital tool** suitable for a live 30-minute client demo.
+This project was developed in response to a real-world analytics case study assignment from consulting and engineering firm specializing in automotive and energy. The challenge: use publicly available data to analyze any region's EV market and present findings in an **interactive digital tool** suitable for a live 30-minute client demo.
 
 The final deliverable — the **Strategic Investment Planner: Germany 2030** — is a Tableau dashboard that allows a CPO to dynamically stress-test market scenarios, understand their infrastructure gap, and quantify their revenue opportunity in the German public charging market through 2030.
 
